@@ -4,8 +4,8 @@
                   // Test your module system
 
                   // 1. Add some tasks
-                  addTask("fssdsdjfdfg","high","2026-03-01")
-                  addTask("fssd","high","2026-04-01")
+                  addTask("clean room","high","2026-03-01")
+                  addTask("eat dinner","high","2026-04-01")
                   // 2. Display all tasks
                   let tasks=getAllTasks()
                   console.log(tasks)
