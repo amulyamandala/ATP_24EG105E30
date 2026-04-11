@@ -1,0 +1,52 @@
+### user details
+GET http://localhost:5000/common-api/common
+
+
+### user creation
+POST  http://localhost:5000/common-api/common
+Content-Type: application/json
+
+{
+"firstName":"test",
+"lastName":"abc",
+"email":"test@gmail.com",
+"password":"123456789",
+"role":"USER",
+"profileImageURL":"",
+"isUserActive":"false"
+}
+
+### user login
+POST http://localhost:5000/common-api/login
+Content-Type: application/json
+
+{
+"email":"admin@gmail.com",
+"password":"admin"
+}
+
+###user logout
+GET http://localhost:5000/common-api/logout
+
+###read articles of all authors 
+GET http://localhost:5000/user-api/articles
+
+
+### adding comments to the article
+PUT http://localhost:5000/user-api/articles
+Content-Type: application/json
+
+{
+    "articleId":"69b3ab73a23a25a5eea4822b",
+    "comment":"this is a very bad article"
+}
+
+
+###change password
+PUT http://localhost:5000/common-api/password
+Content-Type: application/json
+
+{
+    "email":"thraiambica@gmail.com",
+    "password":"vulli"
+}
