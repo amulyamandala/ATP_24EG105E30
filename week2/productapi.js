@@ -53,7 +53,7 @@ products.splice(index,1,modified)
 productApp.delete('/products/:productID',(req,res)=>{
     let idOfp=Number(req.params.productID) 
     console.log(req.params.productID) 
-//findINdex
+//findIndex
 let index1=products.findIndex(obj=>obj.productID===idOfp)
 if(index1===-1){
     return res.json({message:"not found"})
