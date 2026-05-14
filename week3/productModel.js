@@ -8,7 +8,8 @@
      const productSchema=new Schema({
         productId:{
             type:Number,
-            required:[true,"productID is required"]
+            required:[true,"productID is required"],
+            unique:true
         },
         productName:{
             type:String,
@@ -16,12 +17,17 @@
         },
         price:{
             type:Number,
+            required:[true,"price required"],
             min:[10000,"min value is 10000"],
             max:[50000,"max is 50000"]
         },
         brand:{
             type:String,
             required:[true,"brand is required"]
-        }
-     })
-     export const productModel=model("product",productSchema)
+        },
+        },
+        {
+         versionKey:false,
+         timestamps:true,
+         })
+     export const ProductModel=model("product",productSchema)

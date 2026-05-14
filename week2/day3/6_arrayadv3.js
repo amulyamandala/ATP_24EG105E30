@@ -28,25 +28,25 @@ const employees = [
   { id: 204, name: "Pooja", salary: 30000, department: "Sales" }
 ];
 
-//1.
+//1. filter() employees from IT department
 let itDept=employees.filter(ele=>ele.department==="IT")
 console.log(itDept)
 
-//2.
+//2. map() to add netSalary field
 let bonus=employees.map(ele=>({
   name:ele.name,
   netSalary:ele.salary+(ele.salary*0.1)
 }))
 console.log(bonus)
 
-//3.
+//3. reduce() to calculate total salary payout
 let totalSalary=employees.reduce((acc,ele)=>acc+ele.salary,0)
 console.log(totalSalary)
 
-//4.
+//4. find() employee with salary 30000
 let emp=employees.find(ele=>ele.salary===30000)
 console.log(emp)
 
-//5.
+//5. findIndex() of employee "Neha"
 let index2=employees.findIndex(ele=>ele.name==="Neha")
 console.log(index2)

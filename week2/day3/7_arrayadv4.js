@@ -30,22 +30,23 @@ const movies = [
   { id: 4, title: "Interstellar", genre: "Sci-Fi", rating: 8.6 }
 ];
 
-//1.
+//1.filter() only "Sci-Fi" movies
 let scifi=movies.filter(ele=>ele.genre==="Sci-Fi")
 console.log(scifi)
 
-//2.
+/*2. map() to return:
+            "Inception (8.8)"*/
 let titles=movies.map(ele=>ele.title+" ("+ele.rating+")")
 console.log(titles)
 
-//3.
+//3.reduce() to find average movie rating
 let avgRating=movies.reduce((acc,ele)=>acc+ele.rating,0)
 console.log(avgRating/movies.length)
 
-//4.
+/*4. find() movie "Joker"*/
 let joker=movies.find(ele=>ele.title==="Joker")
 console.log(joker)
 
-//5.
+/*5. findIndex() of "Avengers"*/
 let index3=movies.findIndex(ele=>ele.title==="Avengers")
 console.log(index3)

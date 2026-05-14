@@ -26,15 +26,15 @@ Tasks:
   { id: 4, type: "debit", amount: 3000 }
 ];
 
-//1.
+//1.filter() all credit transactions
 let credit=transactions.filter(ele=>ele.type==="credit")
 console.log(credit)
 
-//2.
+/*2. map() to extract only transaction amounts*/
 let amounts=transactions.map(ele=>ele.amount)
 console.log(amounts)
 
-//3.
+/*3. reduce() to calculate final account balance*/
 let balance=transactions.reduce((acc,ele)=>{
   if(ele.type==="credit"){
     return acc+ele.amount
@@ -44,10 +44,10 @@ let balance=transactions.reduce((acc,ele)=>{
 },0)
 console.log(balance)
 
-//4.
+/*4. find() the first debit transaction*/
 let debit=transactions.find(ele=>ele.type==="debit")
 console.log(debit)
 
-//5.
+/*5. findIndex() of transaction with amount 10000*/
 let index4=transactions.findIndex(ele=>ele.amount===10000)
 console.log(index4)

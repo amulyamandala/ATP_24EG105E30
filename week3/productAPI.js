@@ -9,13 +9,12 @@ import {verifyToken} from '../middleware/verifyToken.js'
 //      d. Update a product by productId
 //      e. Delete a product by productId
  */
-
 //create new product 
 productApp.post("/products",async(req,res)=>{
     const newproduct=req.body
     const newproductDoc=new productModel(newproduct)
     await newproductDoc.save()
-    res.status(200).json({message:"the new product is created"})
+    res.status(201).json({message:"the new product is created"})
 })
 
 //read all products 
@@ -28,7 +27,7 @@ productApp.get("/products/:productId",async(req,res)=>{
     const pid=req.params.productId
     const pobj=await productModel.findOne({productId:pid})
     if(!pobj){
-        return res.status(400).json({message:"the product id is wrong"})
+        return res.status(404).json({message:"product not found"})
     }
     res.status(200).json({message:"found",payload:pobj})
 })
@@ -36,18 +35,18 @@ productApp.get("/products/:productId",async(req,res)=>{
 productApp.put("/products/:productId",verifyToken,async(req,res)=>{
     const modifiedproduct=req.body
     const pid=req.params.productId
-    const updatedprod=await productModel.findOneAndUpdate(pid,{$set:{...modifiedproduct}},{new:true,runValidators:true})
-    res.status(200).json({message:"updated",payload:updatedprod})
-
+    const updatedprod=await productModel.findOneAndUpdate({productId:pid},{$set:{...modifiedproduct}},{new:true,runValidators:true})
+if(!updatedprod){
+ return res.status(404).json({message:"product not found"})
+ }
+res.status(200).json({message:"updated",payload:updatedprod})
 })
-    // e. Delete a product by productId
-    productApp.delete("/products/:productId",verifyToken,async(req,res)=>{
-        //get id
-        const pid=req.params.productId
-        const deletedprod=await productModel.findByIdAndDelete(pid)
-        //if the product is not there 
-        if(!deletedprod){
-             return res.status(404).json({message:"there is no product"})
-        }
-        res.status(200).json({message:"here is the product",payload:deletedprod})
-    })
+ // e. Delete a product by productId
+productApp.delete("/products/:productId",verifyToken,async(req,res)=>{
+const pid=req.params.productId
+const deletedprod=await productModel.findOneAndDelete({productId:pid})
+if(!deletedprod){
+return res.status(404).json({message:"there is no product"})
+}
+res.status(200).json({message:"product deleted", payload:deletedprod })
+})

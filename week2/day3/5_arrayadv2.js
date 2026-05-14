@@ -33,11 +33,15 @@ const students = [
   { id: 5, name: "Arjun", marks: 40 }
 ];
 
-//1.
+//1.filter() students who passed (marks ≥ 40)
 let pass=students.filter(ele=>ele.marks>=40)
 console.log(pass)
 
-//2.
+/*2.map() to add a grade field
+              ≥90 → A
+              ≥75 → B
+              ≥60 → C
+              else → D*/
 let grade=students.map(ele=>{
   let g;
   if(ele.marks>=90){
@@ -53,14 +57,14 @@ let grade=students.map(ele=>{
 })
 console.log(grade)
 
-//3.
+/*3. reduce() to calculate average marks*/
 let avg=students.reduce((acc,ele)=>acc+ele.marks,0)
 console.log(avg/students.length)
 
-//4.
+/*4. find() the student who scored 92*/
 let score=students.find(ele=>ele.marks===92)
 console.log(score)
 
-//5.
+/*5. findIndex() of student "Kiran"*/
 let index1=students.findIndex(ele=>ele.name==="Kiran")
 console.log(index1)

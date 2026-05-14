@@ -1,11 +1,7 @@
 //create mini exp route
 import exp from 'express'
 export const productApp=exp.Router()
-
-
-
 //-------------------------------------product---------------------------
-
 let products=[]
 //product API
 //create a product ({ productID,name,brand,price})
@@ -20,7 +16,6 @@ productApp.get('/products',(req,res)=>{
     //send response to clients
 res.json({message:"this res for get product req",payload:products})//this is a js obj and it is turned into a json and sent 
 })
-
 //read all product by brand
 productApp.get('/products/:brand',(req,res)=>{
     //send response to clients
@@ -47,8 +42,6 @@ if(index===-1){
 products.splice(index,1,modified)
     res.json({message:"this res for update products req"})
 })
-
-
 //delete a product
 productApp.delete('/products/:productID',(req,res)=>{
     let idOfp=Number(req.params.productID) 
